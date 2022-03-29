@@ -1,0 +1,9 @@
+---
+# netdata-agent/handlers/main.yml
+
+- name: 'openSUSE/SUSE: zypper refresh'
+  zypper_repository:
+    name: '*'
+    runrefresh: 'true'
+  when:
+    - 'ansible_os_family == "Suse"'
