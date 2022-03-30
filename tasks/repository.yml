@@ -1,0 +1,59 @@
+---
+# netdata-agent/tasks/repository.yml
+
+- name: 'Import the Netdata Repoconfig GPG key'
+  rpm_key:
+    key: 'https://packagecloud.io/netdata/netdata-repoconfig/gpgkey'
+    state: 'present'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
+
+#
+# Repository containing stable packages
+#
+
+- name: 'Import the Netdata GPG key'
+  rpm_key:
+    key: 'https://packagecloud.io/netdata/netdata/gpgkey'
+    state: 'present'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
+    - 'use_stable_packages | bool'
+
+- name: 'Add the Netdata Repoconfig repository'
+  template:
+    src: 'netdata.repo.j2'
+    dest: '/etc/zypp/repos.d/netdata.repo'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'openSUSE/SUSE: zypper refresh'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
+    - 'use_stable_packages | bool'
+
+#
+# Edge Repository containing nightly builds
+#
+
+- name: 'Import the Netdata Edge GPG key'
+  rpm_key:
+    key: 'https://packagecloud.io/netdata/netdata-edge/gpgkey'
+    state: 'present'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
+    - 'not (use_stable_packages | bool)'
+
+- name: 'Add the Netdata Repoconfig repository'
+  template:
+    src: 'netdata-edge.repo.j2'
+    dest: '/etc/zypp/repos.d/netdata-edge.repo'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'openSUSE/SUSE: zypper refresh'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
+    - 'not (use_stable_packages | bool)'
