@@ -1,0 +1,15 @@
+---
+# netdata-agent/tasks/package_name.yml
+
+- name: 'Set package name on openSUSE/SUSE'
+  set_fact:
+    netdata_server_packages:
+      - 'libJudy1'
+      - 'libatomic1'
+      - 'libnetfilter_acct1'
+      - 'libprotobuf20'
+      - 'libsnappy1'
+      - 'libuv1'
+      - 'netdata'
+  when:
+    - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
