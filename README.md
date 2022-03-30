@@ -11,7 +11,8 @@ None.
 Role Variables
 --------------
 
-None.
+- `systemd_unit_name`: name of the systemd service, defaults to `netdata.service`
+- `use_stable_packages`: whether to use stable packages or nightly packages (defaults to using stable packages)
 
 Dependencies
 ------------
