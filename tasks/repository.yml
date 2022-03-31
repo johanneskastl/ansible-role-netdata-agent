@@ -20,7 +20,7 @@
     - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
     - 'use_stable_packages | bool'
 
-- name: 'Add the Netdata Repoconfig repository'
+- name: 'Add the Netdata stable repository'
   template:
     src: 'netdata.repo.j2'
     dest: '/etc/zypp/repos.d/netdata.repo'
@@ -45,7 +45,7 @@
     - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
     - 'not (use_stable_packages | bool)'
 
-- name: 'Add the Netdata Repoconfig repository'
+- name: 'Add the Netdata Edge repository'
   template:
     src: 'netdata-edge.repo.j2'
     dest: '/etc/zypp/repos.d/netdata-edge.repo'
