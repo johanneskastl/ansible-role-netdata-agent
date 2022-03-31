@@ -14,6 +14,11 @@
     name: "{{ netdata_server_packages }}"
     state: 'present'
 
+- name: 'Include tasks to create stream.conf if desired'
+  include: send_stream.yml
+  when:
+    - 'send_stream | bool'
+
 - name: 'Start the service'
   service:
     name: "{{ systemd_unit_name }}"
