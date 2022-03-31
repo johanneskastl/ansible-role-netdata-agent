@@ -4,3 +4,7 @@
 systemd_unit_name: 'netdata.service'
 
 use_stable_packages: 'true'
+
+# settings for sending stream
+send_stream: 'false'
+api_key: '4298d07f-abf7-439f-8a2a-a29e8c9525fa'
