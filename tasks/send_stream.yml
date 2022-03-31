@@ -1,0 +1,12 @@
+---
+# netdata-agent/tasks/send_stream.yml
+
+- name: 'Create the streams.conf'
+  template:
+    src: 'stream.conf.j2'
+    dest: '/etc/netdata/stream.conf'
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify:
+    - 'Restart the netdata service'
