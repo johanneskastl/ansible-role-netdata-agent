@@ -7,3 +7,8 @@
     runrefresh: 'true'
   when:
     - 'ansible_os_family == "Suse"'
+
+- name: 'Restart the netdata service'
+  service:
+    name: "{{ systemd_unit_name }}"
+    state: 'restarted'
