@@ -1,5 +1,6 @@
 galaxy_info:
   role_name: 'netdata-agent'
+  namespace: 'johanneskastl'
   author: 'Johannes Kastl'
   description: 'Install and configure a netdata monitoring agent'
   company: 'B1 Systems GmbH'
