@@ -7,7 +7,8 @@
 - name: 'Add the netdata repository'
   include: repository.yml
 
-- meta: flush_handlers
+- name: 'Flush handlers to trigger refresh of repository'
+  meta: flush_handlers
 
 - name: 'Install the packages'
   package:
