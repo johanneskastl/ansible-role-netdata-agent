@@ -17,7 +17,7 @@ Role Variables
 
 **Sending metrics to another instance**
 - `send_stream`: whether to enable sending metrics to another server (default: `off`)
-- `api_key`: The api key to use for sending metrics, uses a dummy entry as default (`4298d07f-abf7-439f-8a2a-a29e8c9525fa`)   
+- `api_key`: The api key to use for sending metrics, uses a dummy entry as default (`4298d07f-abf7-439f-8a2a-a29e8c9525fa`)
 
 Dependencies
 ------------
@@ -29,7 +29,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-        - { role: 'johanneskastl.netdata-agent' }
+        - role: 'johanneskastl.netdata-agent'
 
 License
 -------
