@@ -28,7 +28,7 @@
     group: 'root'
     mode: '0644'
   notify:
-    - 'openSUSE/SUSE: zypper refresh'
+    - 'Run zypper refresh on openSUSE/SUSE'
   when:
     - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
     - 'use_stable_packages | bool'
@@ -53,7 +53,7 @@
     group: 'root'
     mode: '0644'
   notify:
-    - 'openSUSE/SUSE: zypper refresh'
+    - 'Run zypper refresh on openSUSE/SUSE'
   when:
     - 'ansible_os_family == "Suse" or ansible_os_family == "openSUSE MicroOS"'
     - 'not (use_stable_packages | bool)'
