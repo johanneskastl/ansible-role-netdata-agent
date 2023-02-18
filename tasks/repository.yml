@@ -2,7 +2,7 @@
 # netdata-agent/tasks/repository.yml
 
 - name: 'Import the Netdata Repoconfig GPG key'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: 'https://packagecloud.io/netdata/netdata-repoconfig/gpgkey'
     state: 'present'
   when:
@@ -13,7 +13,7 @@
 #
 
 - name: 'Import the Netdata GPG key'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: 'https://packagecloud.io/netdata/netdata/gpgkey'
     state: 'present'
   when:
@@ -21,7 +21,7 @@
     - 'use_stable_packages | bool'
 
 - name: 'Add the Netdata stable repository'
-  template:
+  ansible.builtin.template:
     src: 'netdata.repo.j2'
     dest: '/etc/zypp/repos.d/netdata.repo'
     owner: 'root'
@@ -38,7 +38,7 @@
 #
 
 - name: 'Import the Netdata Edge GPG key'
-  rpm_key:
+  ansible.builtin.rpm_key:
     key: 'https://packagecloud.io/netdata/netdata-edge/gpgkey'
     state: 'present'
   when:
@@ -46,7 +46,7 @@
     - 'not (use_stable_packages | bool)'
 
 - name: 'Add the Netdata Edge repository'
-  template:
+  ansible.builtin.template:
     src: 'netdata-edge.repo.j2'
     dest: '/etc/zypp/repos.d/netdata-edge.repo'
     owner: 'root'
