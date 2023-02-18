@@ -1,3 +1,5 @@
+![Ansible Lint](https://github.com/johanneskastl/ansible-role-netdata-agent/workflows/Ansible%20Lint/badge.svg)
+
 netdata-agent
 =========
 
