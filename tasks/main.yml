@@ -2,30 +2,30 @@
 # netdata-agent/tasks/main.yml
 
 - name: 'Populate the package name variable depending on the OS'
-  include: package_name.yml
+  ansible.builtin.include: package_name.yml
 
 - name: 'Add the netdata repository'
-  include: repository.yml
+  ansible.builtin.include: repository.yml
 
 - name: 'Flush handlers to trigger refresh of repository'
-  meta: flush_handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: 'Install the packages'
-  package:
+  ansible.builtin.package:
     name: "{{ netdata_server_packages }}"
     state: 'present'
 
 - name: 'Include tasks to create stream.conf if desired'
-  include: send_stream.yml
+  ansible.builtin.include: send_stream.yml
   when:
     - 'send_stream | bool'
 
 - name: 'Start the service'
-  service:
+  ansible.builtin.service:
     name: "{{ systemd_unit_name }}"
     state: 'started'
 
 - name: 'Enable the service'
-  service:
+  ansible.builtin.service:
     name: "{{ systemd_unit_name }}"
     enabled: 'true'
