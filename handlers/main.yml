@@ -2,13 +2,13 @@
 # netdata-agent/handlers/main.yml
 
 - name: 'openSUSE/SUSE: zypper refresh'
-  zypper_repository:
+  community.general.zypper_repository:
     name: '*'
     runrefresh: 'true'
   when:
     - 'ansible_os_family == "Suse"'
 
 - name: 'Restart the netdata service'
-  service:
+  ansible.builtin.service:
     name: "{{ systemd_unit_name }}"
     state: 'restarted'
