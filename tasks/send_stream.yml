@@ -2,7 +2,7 @@
 # netdata-agent/tasks/send_stream.yml
 
 - name: 'Create the streams.conf'
-  template:
+  ansible.builtin.template:
     src: 'stream.conf.j2'
     dest: '/etc/netdata/stream.conf'
     owner: 'root'
