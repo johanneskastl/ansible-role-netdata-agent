@@ -2,7 +2,7 @@
 # netdata-agent/tasks/package_name.yml
 
 - name: 'Set package name on openSUSE/SUSE'
-  set_fact:
+  ansible.builtin.set_fact:
     netdata_server_packages:
       - 'libJudy1'
       - 'libatomic1'
